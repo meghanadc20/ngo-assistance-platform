@@ -6,6 +6,7 @@ import UserDashboard from "./pages/UserDashboard";
 import NgoDashboard from "./pages/NgoDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
+import NgoRegister from "./pages/NgoRegister";
 
 function App() {
   return (
@@ -13,28 +14,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-
         <Route path="/register" element={<Register />} />
-         
-         <Route
-          path="/admin-login"
-          element={<AdminLogin />}
-        />
-
-        <Route
-          path="/user/dashboard"
-          element={<UserDashboard />}
-        />
-
-        <Route
-          path="/ngo/dashboard"
-          element={<NgoDashboard />}
-        />
-
-        <Route
-          path="/admin/dashboard"
-          element={<AdminDashboard />}
-        />
+        <Route path="/ngo-register" element={<NgoRegister />} />
+        <Route path="/admin-login"element={<AdminLogin />} />
+        <Route path="/user/dashboard"element={<UserDashboard />} />
+        <Route path="/ngo/dashboard"element={<NgoDashboard />}/>
+        <Route path="/admin/dashboard"element={<AdminDashboard />}/>
       </Routes>
     </BrowserRouter>
   );

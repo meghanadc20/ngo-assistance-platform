@@ -8,10 +8,9 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -119,7 +118,12 @@ function Login() {
               <Link to="/register">
                 Create an account
               </Link>
+              <p className="auth-footer">
+                Are you an NGO?{" "}
+               <Link to="/ngo-register">Register your NGO</Link>
+              </p>
             </div>
+
           </div>
 
         </div>
@@ -172,22 +176,31 @@ function Login() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="password">
                 Password
               </label>
-
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(event) =>
-                  setPassword(event.target.value)
-                }
-                placeholder="Enter your password"
-                required
-              />
+              <div className="password-input-wrapper">
+            <input
+           id="password"
+           type={showPassword ? "text" : "password"}
+           value={password}
+           onChange={(event) =>
+           setPassword(event.target.value)
+            }
+            placeholder="Enter your password"
+            autoComplete="current-password"
+            required
+            />
+            <button
+             type="button"
+             className="password-toggle"
+             onClick={() => setShowPassword(!showPassword)}
+             aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+             {showPassword ? "🙈" : "👁️"}
+           </button>
+           </div>
             </div>
 
             {message && (

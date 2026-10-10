@@ -21,6 +21,7 @@ function Register() {
   const [locationMessage, setLocationMessage] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -235,7 +236,6 @@ function Register() {
               <label htmlFor="email">
                 Email
               </label>
-
               <input
                 id="email"
                 name="email"
@@ -246,12 +246,34 @@ function Register() {
                 required
               />
             </div>
-
-            
             <div className="form-group">
-  <label htmlFor="phone">
-    Phone Number
-  </label>
+            <label>Password</label>
+            <div className="password-input-wrapper">
+           <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Create a password"
+            minLength="8"
+            maxLength="72"
+            autoComplete="new-password"
+            required
+          />
+        <button
+        type="button"
+        className="password-toggle"
+        onClick={() => setShowPassword(!showPassword)}
+        aria-label={showPassword ? "Hide password" : "Show password"}
+         >
+          {showPassword ? "🙈" : "👁️"}
+          </button>
+          </div>
+          </div>
+            <div className="form-group">
+          <label htmlFor="phone">
+           Phone Number
+          </label>
 
   <div className="phone-input-wrapper">
     <span className="country-code">+91</span>
@@ -276,12 +298,11 @@ function Register() {
       maxLength={10}
       required
     />
-  </div>
-
-  <small className="input-hint">
-    Enter your 10-digit Indian mobile number
-  </small>
-</div>
+       </div>
+        <small className="input-hint">
+         Enter your 10-digit Indian mobile number
+       </small>
+         </div>
             <div className="form-group">
               <label htmlFor="date_of_birth">
                 Date of Birth
@@ -332,30 +353,6 @@ function Register() {
                 </div>
               )}
             </div>
-
-            <div className="form-group">
-              <label htmlFor="password">
-                Password
-              </label>
-
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Create a password"
-                minLength={8}
-                maxLength={72}
-                required
-              />
-            </div>
-
-            {message && (
-              <div className="auth-message">
-                {message}
-              </div>
-            )}
 
             <button
               type="submit"

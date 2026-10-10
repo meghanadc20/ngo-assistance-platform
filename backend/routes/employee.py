@@ -7,12 +7,10 @@ from schemas.employee import EmployeeCreate
 from security.dependencies import get_current_ngo
 from models.ngo import NGO
 
-
 router = APIRouter(
     prefix="/ngo/employees",
     tags=["NGO Employees"]
 )
-
 
 def get_db():
     db = SessionLocal()

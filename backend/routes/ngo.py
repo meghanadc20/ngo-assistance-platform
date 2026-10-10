@@ -87,13 +87,15 @@ def get_ngo_requests(
                 "created_at": request.created_at
             },
             
-            "assigned_employee": {
-                "id": employee.id,
-                "name": employee.name,
-                "phone": employee.phone,
-                "email": employee.email
-            } if employee else None
-        })
+            "assignment_id": assignment.id if assignment else None,
+
+           "assigned_employee": {
+           "id": employee.id,
+           "name": employee.name,
+           "phone": employee.phone,
+           "email": employee.email
+          } if employee else None
+          })
 
     return result
 @router.patch("/requests/{request_id}/accept")

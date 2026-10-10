@@ -6,7 +6,7 @@ import "../App.css";
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -60,13 +60,10 @@ function AdminLogin() {
         </div>
 
         <div className="auth-card">
-
           <h2>Admin Login</h2>
-
           <p className="auth-subtitle">
             Sign in to access the platform administration portal.
           </p>
-
           <form
             className="login-form"
             onSubmit={handleLogin}
@@ -88,30 +85,37 @@ function AdminLogin() {
                 required
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="admin-password">
                 Password
               </label>
-
-              <input
-                id="admin-password"
-                type="password"
-                value={password}
-                onChange={(event) =>
-                  setPassword(event.target.value)
-                }
-                placeholder="Enter admin password"
-                required
-              />
+              <div className="password-input-wrapper">
+            <input
+             id="admin-password"
+             type={showPassword ? "text" : "password"}
+             value={password}
+             onChange={(event) =>
+             setPassword(event.target.value)
+            }
+            placeholder="Enter your password"
+            autoComplete="current-password"
+            required
+            />
+            <button
+             type="button"
+             className="password-toggle"
+             onClick={() => setShowPassword(!showPassword)}
+             aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+             {showPassword ? "🙈" : "👁️"}
+           </button>
+           </div>
             </div>
-
             {message && (
               <div className="auth-message">
                 {message}
               </div>
             )}
-
             <button
               type="submit"
               className="primary-button"
