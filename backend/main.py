@@ -36,7 +36,8 @@ app.include_router(assignment_router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://friendly-potato-x5pgj4www475fvjjr-5173.app.github.dev"
+        "https://friendly-potato-x5pgj4www475fvjjr-5173.app.github.dev",
+         "https://ngo-assistance-platform.netlify.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
